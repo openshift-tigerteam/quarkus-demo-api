@@ -1,0 +1,26 @@
+quarkus:
+  banner:
+    enabled: false
+  hibernate-orm:
+    database:
+      generation: none
+  swagger-ui:
+    always-include: true
+    path: '/swagger-ui'
+    operations-sorter: method
+
+mp:
+  openapi:
+    extensions:
+      smallrye:
+        info:
+          title: Application API
+          version: 0.0.1
+          description: API for retrieving applications
+          contact:
+            email: snimmo@redhat.com
+            name: Application API Support
+            url: https://github.com/openshift-tigerteam/quarkus-demo-api
+          license:
+            name: Apache 2.0
+            url: http://www.apache.org/licenses/LICENSE-2.0.html

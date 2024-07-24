@@ -1,0 +1,12 @@
+quarkus:
+  log:
+    level: INFO
+    category:
+      "com.redhat.demo":
+        level: INFO
+  hibernate-orm:
+    log:
+      sql: false
+  flyway:
+    migrate-at-start: true
+    locations: db/migration
