@@ -17,7 +17,7 @@ public class ApplicationResourceTest {
     public void getAll() {
         given()
                 .when()
-                .get("/api/v1/applications")
+                .get("/v1/applications")
                 .then()
                 .statusCode(200);
     }
@@ -28,14 +28,14 @@ public class ApplicationResourceTest {
         Application saved = given()
                 .contentType(ContentType.JSON)
                 .body(application)
-                .post("/api/v1/applications")
+                .post("/v1/applications")
                 .then()
                 .statusCode(Response.Status.CREATED.getStatusCode())
                 .extract().as(Application.class);
         assertNotNull(saved.applicationId());
         Application got = given()
                 .when()
-                .get("/api/v1/applications/{applicationId}", saved.applicationId())
+                .get("/v1/applications/{applicationId}", saved.applicationId())
                 .then()
                 .statusCode(Response.Status.OK.getStatusCode())
                 .extract().as(Application.class);
@@ -46,7 +46,7 @@ public class ApplicationResourceTest {
     public void getByIdNotFound() {
         given()
                 .when()
-                .get("/api/v1/applications/{applicationId}", 987654321)
+                .get("/v1/applications/{applicationId}", 987654321)
                 .then()
                 .statusCode(Response.Status.NOT_FOUND.getStatusCode());
     }
@@ -57,7 +57,7 @@ public class ApplicationResourceTest {
         given()
                 .contentType(ContentType.JSON)
                 .body(application)
-                .post("/api/v1/applications")
+                .post("/v1/applications")
                 .then()
                 .statusCode(Response.Status.BAD_REQUEST.getStatusCode());
     }
@@ -68,7 +68,7 @@ public class ApplicationResourceTest {
         Application saved = given()
                 .contentType(ContentType.JSON)
                 .body(application)
-                .post("/api/v1/applications")
+                .post("/v1/applications")
                 .then()
                 .statusCode(Response.Status.CREATED.getStatusCode())
                 .extract().as(Application.class);
@@ -76,12 +76,12 @@ public class ApplicationResourceTest {
         given()
                 .contentType(ContentType.JSON)
                 .body(updated)
-                .put("/api/v1/applications/{applicationId}", updated.applicationId())
+                .put("/v1/applications/{applicationId}", updated.applicationId())
                 .then()
                 .statusCode(Response.Status.NO_CONTENT.getStatusCode());
         Application got = given()
                 .when()
-                .get("/api/v1/applications/{applicationId}", saved.applicationId())
+                .get("/v1/applications/{applicationId}", saved.applicationId())
                 .then()
                 .statusCode(Response.Status.OK.getStatusCode())
                 .extract().as(Application.class);

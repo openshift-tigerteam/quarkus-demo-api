@@ -5,6 +5,11 @@
   * https://openjdk.org
   * https://podman-desktop.io or https://podman.io/docs/installation
 
+## URLs
+* Container Repo: https://quay.io/repository/openshift-tigerteam/quarkus-demo-api
+
+# Commands 
+
 To run: 
 ```shell
 quarkus dev --clean
@@ -45,4 +50,16 @@ podman push quay.io/openshift-tigerteam/quarkus-demo-api:latest
 ```
 
 You may need to login at quay.io `podman login`
+
+# Deploy
+
+This manifest contains everything: 
+* namespace: quarkus-demo
+* postgres database: deployment, service
+* quarkus-demo-api: deployment, service and route
+
+Log into the openshift cluster and run: 
+```shell
+oc apply deploy/manifests/deploy.yml
+```
 

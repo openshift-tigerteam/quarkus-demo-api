@@ -7,7 +7,7 @@ import org.eclipse.microprofile.openapi.annotations.Operation;
 
 import java.net.URI;
 
-@Path("/")
+@Path("")
 public class IndexResource {
 
     private static final URI uri = URI.create("/swagger-ui");
