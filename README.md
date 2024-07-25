@@ -53,13 +53,13 @@ You may need to login at quay.io `podman login`
 
 # Deploy
 
-This manifest contains everything: 
-* namespace: quarkus-demo
+This manifest contains everything:
 * postgres database: deployment, service
 * quarkus-demo-api: deployment, service and route
 
 Log into the openshift cluster and run: 
 ```shell
+oc new-project <projectname>
 oc apply deploy/manifests/deploy.yml
 ```
 
